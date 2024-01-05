@@ -51,9 +51,9 @@ fun Application.setKoinApplication(koinApplication: KoinApplication){
 }
 
 internal fun PluginBuilder<KoinApplication>.setupMonitoring(koinApplication: KoinApplication) {
-    val monitor = environment?.monitor
-    monitor?.raise(KoinApplicationStarted, koinApplication)
-    monitor?.subscribe(ApplicationStopping) {
+    val monitor = application.monitor
+    monitor.raise(KoinApplicationStarted, koinApplication)
+    monitor.subscribe(ApplicationStopping) {
         monitor.raise(KoinApplicationStopPreparing, koinApplication)
         koinApplication.koin.close()
         monitor.raise(KoinApplicationStopped, koinApplication)

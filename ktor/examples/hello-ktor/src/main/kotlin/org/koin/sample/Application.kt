@@ -26,13 +26,13 @@ fun Application.mainModule() {
     }
 
     // Install Ktor features
-    environment.monitor.subscribe(KoinApplicationStarted) {
+    monitor.subscribe(KoinApplicationStarted) {
         log.info("Koin started.")
     }
-    environment.monitor.subscribe(KoinApplicationStopPreparing) {
+    monitor.subscribe(KoinApplicationStopPreparing) {
         log.info("Koin stopping...")
     }
-    environment.monitor.subscribe(KoinApplicationStopped) {
+    monitor.subscribe(KoinApplicationStopped) {
         log.info("Koin stopped.")
     }
 
